@@ -10,6 +10,44 @@ body {
     background-attachment: fixed;
 }
 
+.menu-btn {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #000;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.line {
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #fff;
+}
+
+.show {
+    left: 0;
+}
+
+.show .line-1 {
+    transform: rotate(-45deg);
+}
+
+.show .line-2 {
+    display: none;
+}
+
+.show .line-3 {
+    transform: rotate(45deg);
+    margin-top: -50px;
+}
+
 .shadow {
     position: absolute;
     width: 100%;
@@ -49,6 +87,11 @@ header {
     height: 100dvh;
     left: 0;
     top: 0;
+    transition: 1s;
+}
+
+.header-logo {
+    width: 100%;
 }
 
 .menu li {
@@ -429,7 +472,7 @@ footer {
     }
 
     .box {
-        height: 100vh;
+        height: 80vh;
     }
 
     .box-text h2 {
@@ -437,7 +480,22 @@ footer {
     }
 
     header {
-        position: absolute;
+        width: 100%;
+        background: #ffffffd6;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 100;
+    }
+
+    .header-logo {
+        display: block;
+        width: 30%;
+    }
+
+    .menu li {
+        padding-left: 20px;
+        width: 50%;
     }
 
     .about {
