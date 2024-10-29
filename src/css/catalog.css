@@ -1,0 +1,59 @@
+.catalog {
+    width: 100%;
+    color: #fff;
+}
+
+.catalog-item {
+    width: 100%;
+    height: 350px;
+    margin-top: 30px;
+    display: flex;
+    color: #000;
+}
+
+.item-text-wrap {
+    padding: 0 30px;
+    box-sizing: border-box;
+    background: #ffffff50;
+}
+
+.item-text-wrap p {
+    font-family: "Montserrat", sans-serif;;
+}
+
+.about h1, .about h2 {
+    color: #fff;
+} 
+
+.item-img {
+    min-width: 40%;
+    height: 100%;
+    background: url(../img/perk-1.webp) center center/cover no-repeat;
+}
+
+.price {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 100px) and (max-width: 1200px) {
+    .catalog-item {
+        height: auto;
+        display: block;
+    }
+
+    .item-img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .item-text-wrap {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+
+    .item-text-wrap h2 {
+        margin: 0;
+        padding-top: 30px;
+    }
+} 
