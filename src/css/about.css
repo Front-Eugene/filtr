@@ -40,11 +40,14 @@
 
 .single-text {
     width: 100%;
-    padding: 0 30px;
+    padding: 0 0 0 30px;
     box-sizing: border-box;
 }
 
 .single-text p {
+    background: #ffffff50;
+    padding: 30px;
+    margin: 0;
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
 }
@@ -62,11 +65,31 @@
     margin: 0;
     padding: 30px;
     box-sizing: border-box;
+    background: #ffffff50;
+}
+
+.single-text ul li {
+    margin: 10px 0;
+    font-size: 20px;
 }
 
 @media screen and (min-width: 100px) and (max-width: 1200px) {
+
+    .real {
+        padding: 0 30px;
+    }
+
+    .single-text {
+        padding: 0;
+    }
+
     .about-1 {
-        flex-direction: column;
+        flex-direction: column-reverse;
+    }
+
+    .about-1-img {
+        width: 100%;
+        height: 300px;
     }
 
     .about-text {
