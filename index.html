@@ -45,13 +45,13 @@
                         <a href="src/pages/catalog.html">Каталог</a>
                     </li>
     
-                    <li>
+                    <!-- <li>
                         <a href="#">Скачать</a>
-                    </li>
+                    </li> -->
 
-                    <li>
+                    <!-- <li>
                         <a href="src/pages/article-page.html">Статьи</a>
-                    </li>
+                    </li> -->
     
                     <li>
                         <a href="src/pages/contact.html">Контакты</a>
@@ -137,39 +137,39 @@
             
 
             <section class="perks">
-                <div class="perks-item" style="background: url(src/img/perk-1.webp) center center/cover no-repeat;">
+                <div class="perks-item" style="background: url(src/img/rukav.jpg) center center/cover no-repeat;">
                     <a href="#">
                         <div class="perks-number">
                             01
                         </div>
-                        asdkngasbdfsdfgsd
+                        <h2 class="perks-title">Рукава фильтровальные</h2>
                     </a>
                 </div>
 
-                <div class="perks-item" style="background: url(src/img/perk-2.webp) center center/cover no-repeat;">
+                <div class="perks-item" style="background: url(src/img/karkas.png) center center/cover no-repeat;">
                     <a href="#">
                         <div class="perks-number">
                             02
                         </div>
-                        sdfgsdnfgplsdfm
+                        <h2 class="perks-title">Карманные фильтры</h2>
                     </a>
                 </div>
 
-                <div class="perks-item" style="background: url(src/img/perk-3.webp) center center/cover no-repeat;">
+                <div class="perks-item" style="background: url(src/img/filtr-water.jpg) center center/cover no-repeat;">
                     <a href="#">
                         <div class="perks-number">
                             03
                         </div>
-                        asdfasfdgdfg
+                        <h2 class="perks-title">Фильтрация жидкости</h2>
                     </a>
                 </div>
 
-                <div class="perks-item" style="background: url(src/img/perk-4.webp) center center/cover no-repeat;">
+                <div class="perks-item" style="background: url(src/img/chulok.png) center center/cover no-repeat;">
                     <a href="#">
                         <div class="perks-number">
                             04
                         </div>
-                        asdfasdfasdff
+                        <h2 class="perks-title">Фильтры рукавные чулочные для молока</h2>
                     </a>
                 </div>
             </section>
@@ -198,7 +198,7 @@
                 </div>
             </section>
 
-            <section class="news">
+            <!-- <section class="news">
                 <div class="news-text">
                     <p class="news-title">Новости</p>
                     <h2>НАЗВАНИЕ НОВОСТИ</h2>
@@ -219,15 +219,24 @@
                     </a>
                 </div>
                 <div class="news-img" style="background: url(src/img/perk-4.webp) center center/cover no-repeat;"></div>
-            </section>
-
-            <!-- <section class="team">
-                <div class="team-item" style="background: url(src/img/face-1.avif) center center/cover no-repeat;"></div>
-                <div class="team-item" style="background: url(src/img/face-2.avif) center center/cover no-repeat;"></div>
-                <div class="team-item" style="background: url(src/img/face-3.avif) center center/cover no-repeat;"></div>
             </section> -->
+
+            <section class="form">
+                <h2>Оставьте заявлку</h2>
+                <form id="tg-form" method="post" action="send.php" style="background: none;">
+                    <input class="form__input" name="name" id="name" type="text" placeholder="Введите ваше имя" required="" minlength="2">
+                    <input class="form__input tel-1" name="phone" id="phone" type="tel" placeholder="Ваш номер телефона" required="">
+                    <button type="submit" class="form__button" id="btn">Отправить заявку</button>
+                    <label>
+                      <input type="checkbox" checked="" required="">
+                        Я согласен с политикой конфиденциальности и пользовательским соглашением
+                    </label>
+                </form>
+            </section>
         </main>
     </div>
+
+
     
     <footer>
         <div class="footer-item">
@@ -264,5 +273,98 @@
         </div>
     </footer>
     <script src="src/js/script.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js?ver=1.0.0" id="tgsend-js"></script>  
+
+    <script>
+        const TOKEN = "7443631183:AAH56DuP6IBirXeV-fNEKwYM-m8g2OPTAYA____",
+        CHAT_ID = "-1002181220204_____",
+        URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`,
+        phoneInput = document.getElementById('phone');
+
+    // МАСКА ТЕЛЕФОНА
+    [].forEach.call( document.querySelectorAll('.tel-1'), function(input) {
+    var keyCode;
+    function mask(event) {
+        event.keyCode && (keyCode = event.keyCode);
+        var pos = this.selectionStart;
+        if (pos < 3) event.preventDefault();
+        var matrix = "+375 (__) ___ - __ - __",
+            i = 0,
+            def = matrix.replace(/\D/g, ""),
+            val = this.value.replace(/\D/g, ""),
+            new_value = matrix.replace(/[_\d]/g, function(a) {
+                return i < val.length ? val.charAt(i++) : a
+            });
+        i = new_value.indexOf("_");
+        if (i != -1) {
+            i < 5 && (i = 3);
+            new_value = new_value.slice(0, i)
+        }
+        var reg = matrix.substr(0, this.value.length).replace(/_+/g,
+            function(a) {
+                return "\\d{1," + a.length + "}"
+            }).replace(/[+()]/g, "\\$&");
+        reg = new RegExp("^" + reg + "$");
+        if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+        this.value = new_value;
+        }
+        if (event.type == "blur" && this.value.length < 5) {
+        this.value = "";
+        }
+    }
+
+    input.addEventListener("input", mask, false);
+    input.addEventListener("focus", mask, false);
+    input.addEventListener("blur", mask, false);
+    input.addEventListener("keydown", mask, false);
+
+    });
+
+    phoneInput.addEventListener('keydown', function(event) {
+    if (event.key.match(/[a-zа-я]/i) && event.key !== 'Backspace') {
+        event.preventDefault(); // Prevent typing any letters except Backspace
+    }
+    });
+
+    document.getElementById('tg-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let message = `<b>Заявка с сайта</b>\n`;
+        message = `<b>http://bestbuy.britva.of.by/</b>\n`;
+        message += `<b>Имя:</b> ${this.name.value} \n`;
+        message += `<b>Телефон:</b> ${this.phone.value} \n`;
+
+        // Validate name and phone number
+        if (this.name === '' || this.phone === '') {
+            alert('Name and Phone number are required');
+            return; // Stop form submission if validation fails
+        }
+
+    axios.post(URI_API, {
+        chat_id: CHAT_ID,
+        parse_mode: 'html',
+        text: message
+    })
+    .then((res) => {
+        this.name.value = '';
+        this.phone.value = '';
+        
+        window.location.href = 'thanks.php';
+        
+
+        
+        let noBtn = document.querySelector('.click-btn')
+        noBtn.addEventListener('click', function() {
+            noBtn.classList.add('remove');
+            noBtn.disabled = true;
+        });
+    })
+    
+    .catch((error) => {
+        console.error('Error sending message to Telegram:', error);
+        // Handle the error here if needed
+    });
+    })
+    </script>
 </body>
 </html>
