@@ -171,9 +171,9 @@
             <a class="footer-link" href="#">Контакты</a>
         </div>
         <div class="footer-item social">
-            <a class="footer-link social-item" href="#">
+            <!-- <a class="footer-link social-item" href="#">
                 <img src="../../img/instagram.png" alt="">
-            </a>
+            </a> -->
     
             <a class="footer-link social-item" href="#">
                 <img src="../../img/viber.png" alt="">
@@ -189,5 +189,100 @@
         </div>
     </footer>
     <script src="../../js/script.js"></script>    
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js?ver=1.0.0" id="tgsend-js"></script>
+    <script src="../../js/script.js"></script>  
+
+    <script>
+        const TOKEN = "7443631183:AAH56DuP6IBirXeV-fNEKwYM-m8g2OPTAYA____",
+        CHAT_ID = "-1002181220204_____",
+        URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`,
+        phoneInput = document.getElementById('phone');
+
+    // МАСКА ТЕЛЕФОНА
+    [].forEach.call( document.querySelectorAll('.tel-1'), function(input) {
+    var keyCode;
+    function mask(event) {
+        event.keyCode && (keyCode = event.keyCode);
+        var pos = this.selectionStart;
+        if (pos < 3) event.preventDefault();
+        var matrix = "+375 (__) ___ - __ - __",
+            i = 0,
+            def = matrix.replace(/\D/g, ""),
+            val = this.value.replace(/\D/g, ""),
+            new_value = matrix.replace(/[_\d]/g, function(a) {
+                return i < val.length ? val.charAt(i++) : a
+            });
+        i = new_value.indexOf("_");
+        if (i != -1) {
+            i < 5 && (i = 3);
+            new_value = new_value.slice(0, i)
+        }
+        var reg = matrix.substr(0, this.value.length).replace(/_+/g,
+            function(a) {
+                return "\\d{1," + a.length + "}"
+            }).replace(/[+()]/g, "\\$&");
+        reg = new RegExp("^" + reg + "$");
+        if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+        this.value = new_value;
+        }
+        if (event.type == "blur" && this.value.length < 5) {
+        this.value = "";
+        }
+    }
+
+    input.addEventListener("input", mask, false);
+    input.addEventListener("focus", mask, false);
+    input.addEventListener("blur", mask, false);
+    input.addEventListener("keydown", mask, false);
+
+    });
+
+    phoneInput.addEventListener('keydown', function(event) {
+    if (event.key.match(/[a-zа-я]/i) && event.key !== 'Backspace') {
+        event.preventDefault(); // Prevent typing any letters except Backspace
+    }
+    });
+
+    document.getElementById('tg-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let message = `<b>Заявка с сайта</b>\n`;
+        message = `<b>http://bestbuy.britva.of.by/</b>\n`;
+        message += `<b>Имя:</b> ${this.name.value} \n`;
+        message += `<b>Телефон:</b> ${this.phone.value} \n`;
+
+        // Validate name and phone number
+        if (this.name === '' || this.phone === '') {
+            alert('Name and Phone number are required');
+            return; // Stop form submission if validation fails
+        }
+
+    axios.post(URI_API, {
+        chat_id: CHAT_ID,
+        parse_mode: 'html',
+        text: message
+    })
+    .then((res) => {
+        this.name.value = '';
+        this.phone.value = '';
+        
+        window.location.href = 'thanks.php';
+        
+
+        
+        let noBtn = document.querySelector('.click-btn')
+        noBtn.addEventListener('click', function() {
+            noBtn.classList.add('remove');
+            noBtn.disabled = true;
+        });
+    })
+    
+    .catch((error) => {
+        console.error('Error sending message to Telegram:', error);
+        // Handle the error here if needed
+    });
+    })
+    </script>
 </body>
 </html>
