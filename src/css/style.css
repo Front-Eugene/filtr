@@ -493,6 +493,11 @@ footer {
 
 
 @media screen and (min-width: 100px) and (max-width: 1200px) {
+
+    .form form {
+        width: 100%;
+    }
+
     main {
         width: 100%;
     }
