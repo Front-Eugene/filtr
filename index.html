@@ -56,6 +56,10 @@
                     <li>
                         <a href="src/pages/contact.html">Контакты</a>
                     </li>
+
+                    <a class="contact-tel" style="color: #000;" href="tel:+375298796336">+375 (29) 879-63-36</a>
+                    <a class="contact-tel" style="color: #000;" href="tel:+375291682070">+375 (29) 168-20-70</a>
+                    <a class="mail footer-link" style="color: #000;" href="mailto:mailexample@mail.ru">ekm@kraimer.by</a>
                 </ul>
             </nav>
         </header>
@@ -91,7 +95,7 @@
                     </p>
                     <a href="src/pages/about.html">
                         <button class="btn">
-                            подпобнее
+                            подробнее
                         </button>
                     </a>
                 </div>
@@ -100,7 +104,8 @@
 
             <section class="perks">
                 <div class="perks-item" style="background: url(src/img/rukav.jpg) center center/cover no-repeat;">
-                    <a href="src/pages/catalog.html">
+                    <a href="src/pages/catalog.html#product-1">
+                        
                         <div class="perks-number">
                             01
                         </div>
@@ -109,7 +114,7 @@
                 </div>
 
                 <div class="perks-item" style="background: url(src/img/karkas.png) center center/cover no-repeat;">
-                    <a href="src/pages/catalog.html">
+                    <a href="src/pages/catalog.html#product-2">
                         <div class="perks-number">
                             02
                         </div>
@@ -118,7 +123,7 @@
                 </div>
 
                 <div class="perks-item" style="background: url(src/img/filtr-water.png) center center/cover no-repeat;">
-                    <a href="src/pages/catalog.html">
+                    <a href="src/pages/catalog.html#product-3">
                         <div class="perks-number">
                             03
                         </div>
@@ -127,7 +132,7 @@
                 </div>
 
                 <div class="perks-item" style="background: url(src/img/chulok.png) center center/cover no-repeat;">
-                    <a href="src/pages/catalog.html">
+                    <a href="src/pages/catalog.html#product-4">
                         <div class="perks-number">
                             04
                         </div>
@@ -184,15 +189,16 @@
             </section> -->
 
             <section class="form">
-                <h2>Заказать звонок</h2>
+                <h2>Задать вопрос</h2>
                 <form id="tg-form" method="post" action="send.php" style="background: none;">
                     <input class="form__input" name="name" id="name" type="text" placeholder="Введите ваше имя" required="" minlength="2">
                     <input class="form__input tel-1" name="phone" id="phone" type="tel" placeholder="Ваш номер телефона" required="">
+                    <input class="form__input" name="massage" id="massage" type="text" placeholder="Задать вопрос " required="">
                     <button type="submit" class="form__button" id="btn">Отправить заявку</button>
-                    <label>
+                    <!-- <label>
                       <input type="checkbox" checked="" required="">
                         Я согласен с политикой конфиденциальности и пользовательским соглашением
-                    </label>
+                    </label> -->
                 </form>
             </section>
         </main>
