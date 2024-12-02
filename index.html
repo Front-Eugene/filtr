@@ -255,8 +255,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js?ver=1.0.0" id="tgsend-js"></script>  
 
     <script>
-        const TOKEN = "7443631183:AAH56DuP6IBirXeV-fNEKwYM-m8g2OPTAYA____",
-        CHAT_ID = "-1002181220204_____",
+        const TOKEN = "8163537632:AAHiCMQ149mT9th9Id5yvsh-ePRTXj_pfMw",
+        CHAT_ID = "-1002293959626",
         URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`,
         phoneInput = document.getElementById('phone');
 
@@ -312,6 +312,7 @@
         message = `<b>http://bestbuy.britva.of.by/</b>\n`;
         message += `<b>Имя:</b> ${this.name.value} \n`;
         message += `<b>Телефон:</b> ${this.phone.value} \n`;
+        message += `<b>Телефон:</b> ${this.massage.value} \n`;
 
         // Validate name and phone number
         if (this.name === '' || this.phone === '') {
