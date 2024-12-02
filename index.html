@@ -204,7 +204,7 @@
                 <form id="tg-form" method="post" action="send.php" style="background: none;">
                     <input class="form__input" name="name" id="name" type="text" placeholder="Введите ваше имя" required="" minlength="2">
                     <input class="form__input tel-1" name="phone" id="phone" type="tel" placeholder="Ваш номер телефона" required="">
-                    <input class="form__input" name="massage" id="massage" type="text" placeholder="Задать вопрос " required="">
+                    <input class="form__input" name="message" id="message" type="text" placeholder="Задать вопрос ">
                     <button type="submit" class="form__button" id="btn">Отправить заявку</button>
                     <!-- <label>
                       <input type="checkbox" checked="" required="">
@@ -309,10 +309,9 @@
     e.preventDefault();
 
     let message = `<b>Заявка с сайта</b>\n`;
-        message = `<b>http://bestbuy.britva.of.by/</b>\n`;
         message += `<b>Имя:</b> ${this.name.value} \n`;
         message += `<b>Телефон:</b> ${this.phone.value} \n`;
-        message += `<b>Телефон:</b> ${this.massage.value} \n`;
+        message += `<b>Сообщение:</b> ${this.message.value} \n`;
 
         // Validate name and phone number
         if (this.name === '' || this.phone === '') {
@@ -328,8 +327,9 @@
     .then((res) => {
         this.name.value = '';
         this.phone.value = '';
+        this.message.value = '';
         
-        window.location.href = 'thanks.php';
+        window.location.href = 'index.html';
         
 
         
